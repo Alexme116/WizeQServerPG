@@ -31,7 +31,17 @@ const deleteChat = async (id) => {
         console.log(error);
         throw new Error(error);
     }
-
 }
 
-module.exports = { getChatsById, createChat, deleteChat }
+const updateChat = async (id, chat) => {
+    try {
+        const query = 'UPDATE chats SET title = $1 WHERE id = $2 RETURNING *';
+        const { rows } = await db.query(query, [chat.title, id]);
+        return rows[0];
+    } catch (error) {
+        console.log(error);
+        throw new Error(error);
+    }
+}
+
+module.exports = { getChatsById, createChat, deleteChat, updateChat }

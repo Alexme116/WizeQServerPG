@@ -33,4 +33,16 @@ async function deleteChat(req, res) {
     }
 }
 
-module.exports = { getChatsById, createChat, deleteChat }
+async function updateChat(req, res) {
+    const { id } = req.params;
+    const chat_req = req.body;
+    try {
+        const chat = await chatsModel.updateChat(id, chat_req);
+        res.json(chat);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
+module.exports = { getChatsById, createChat, deleteChat, updateChat }
