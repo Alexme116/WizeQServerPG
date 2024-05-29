@@ -22,4 +22,15 @@ async function deleteMessage(req, res) {
     }
 }
 
-module.exports = { getMessageById, deleteMessage }
+async function createMessage(req, res) {
+    const message_req = req.body;
+    try {
+        const message = await messagesModel.createMessage(message_req);
+        res.json(message);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
+module.exports = { getMessageById, deleteMessage, createMessage }

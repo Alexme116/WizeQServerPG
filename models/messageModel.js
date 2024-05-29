@@ -22,4 +22,16 @@ const deleteMessage = async (chat_id) => {
     }
 }
 
-module.exports = { getMessageById, deleteMessage }
+const createMessage = async (_message) => {
+    try {
+        const query = 'INSERT INTO messages (chat_id, is_from, message) VALUES ($1, $2, $3) RETURNING *';
+        const { chat_id, is_from, message } = _message;
+        const { rows } = await db.query(query, [chat_id, is_from, message]);
+        return rows[0];
+    } catch (error) {
+        console.log(error);
+        throw new Error(error);
+    }
+}
+
+module.exports = { getMessageById, deleteMessage, createMessage }
