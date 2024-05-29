@@ -1,9 +1,9 @@
 const { db } = require('../config/db');
 
-const getMessageById = async (id) => {
+const getMessageById = async (chat_id) => {
     try {
-        const query = 'SELECT d.id, d.is_from, d.message FROM users U JOIN messages d ON U.id = d.chat_id WHERE U.id = $1;';
-        const { rows } = await db.query(query, [id]);
+        const query = 'SELECT d.id, d.is_from, d.message FROM messages d WHERE d.chat_id = $1;';
+        const { rows } = await db.query(query, [chat_id]);
         return rows;
     } catch (error) {
         console.log(error);

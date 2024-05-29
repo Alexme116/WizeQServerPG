@@ -1,9 +1,9 @@
 const messagesModel = require('../models/messageModel');
 
 async function getMessageById(req, res) {
-    const { id } = req.params;
+    const { chat_id } = req.params;
     try {
-        const message = await messagesModel.getMessageById(id);
+        const message = await messagesModel.getMessageById(chat_id);
         res.json(message);
     } catch (error) {
         console.log(error);
