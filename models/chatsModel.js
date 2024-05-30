@@ -2,7 +2,7 @@ const { db } = require('../config/db');
 
 const getChatsById = async (id) => {
     try {
-        const query = 'SELECT d.id, d.title FROM users U JOIN chats d ON U.id = d.user_id WHERE U.id = $1;';
+        const query = 'SELECT d.id, d.title FROM users U JOIN chats d ON U.id = d.user_id WHERE U.id = $1 ORDER BY id DESC;';
         const { rows } = await db.query(query, [id]);
         return rows;
     } catch (error) {
