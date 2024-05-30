@@ -35,4 +35,16 @@ const updateUser = async (id, user) => {
     }
 }
 
-module.exports = { getAllUsers, getUserById, createUser, updateUser }
+const deleteUser = async (id) => {
+    try {
+        const query = 'DELETE FROM users WHERE id = $1 RETURNING *';
+        const { rows } = await db.query(query, [id]);
+        return rows[0];
+    } catch (error) {
+        console.log(error);
+        throw new Error(error);
+    }
+
+}
+
+module.exports = { getAllUsers, getUserById, createUser, updateUser, deleteUser }
