@@ -1,11 +1,9 @@
+require('dotenv').config({ path: '../.env' })
+
 const Pool = require('pg').Pool
 
 const db = new Pool({
-    user: "alex",
-    password: "password",
-    host: "localhost",
-    port: 5432,
-    database: "wizeq"
+    connectionString: process.env.POSTGRES_URL,
 })
 
 module.exports = { db }
