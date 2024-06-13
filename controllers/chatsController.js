@@ -127,9 +127,8 @@ const getContextNearby = async (req, res) => {
         const nearbyContext = context.data.items.map((item) => item.text).join('\n\n');
 
         console.log(nearbyContext);
-        const formattedPrompt = `You are a virtual assistant in nutrition. You can answer any related 
-        question about nutrition. The answer format should not exceed 700 characters as this will be saved in
-        a database. Use this relevant context to try to answer the user prompt; if the context 
+        const formattedPrompt = `You are a virtual assistant. You can answer any related 
+        question. Use this relevant context to try to answer the user prompt; if the context 
         does not provide the answer, feel free to use your own knowledge. Context:
         ${nearbyContext}. User query: ${message}.`;
 
@@ -151,9 +150,8 @@ const getContextNearby = async (req, res) => {
 
         console.log(link.message);
 
-        const formattedPrompt = `You are a virtual assistant in nutrition. You can answer any related 
-        question about nutrition. The answer format should not exceed 700 characters as this will be saved in
-        a database. Use this relevant context to try to answer the user prompt; if the context 
+        const formattedPrompt = `You are a virtual assistant. You can answer any related 
+        question. Use this relevant context to try to answer the user prompt; if the context 
         does not provide the answer, feel free to use your own knowledge. Context:
         . User query: ${message}.`;
 
