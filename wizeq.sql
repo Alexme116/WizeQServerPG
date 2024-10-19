@@ -8,7 +8,7 @@ CREATE TABLE users (
 CREATE TABLE chats (
     ID SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(ID),
-    title VARCHAR(200),
+    title VARCHAR(200)
 );
 
 CREATE TABLE messages (
